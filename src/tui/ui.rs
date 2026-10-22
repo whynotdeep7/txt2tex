@@ -178,8 +178,11 @@ fn field_pane(frame: &mut Frame, area: Rect, app: &App, list: &mut ListState) {
     frame.render_stateful_widget(
         List::new(items)
             .block(pane(app.section().title()))
+            // The foreground matters: labels are drawn DarkGray, so without
+            // it the selected row's label vanishes into its own highlight.
             .highlight_style(
                 Style::new()
+                    .fg(Color::White)
                     .bg(Color::DarkGray)
                     .add_modifier(Modifier::BOLD),
             )

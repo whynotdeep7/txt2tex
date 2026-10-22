@@ -29,7 +29,7 @@ editor), press `b`, get a PDF that looks like it was set by a typesetter —
 because it was.
 
 <p align="center">
-  <img src="assets/demo.svg" alt="txt2tex build and txt2tex analyze in a terminal" width="620">
+  <img src="assets/tui.svg" alt="The txt2tex editor: a section list, live analyzer feedback, and the fields of the Experience section" width="820">
 </p>
 
 ---
@@ -101,25 +101,9 @@ txt2tex
 That's the whole thing. It opens the editor on `resume.txt`, creating one from
 a template if you don't have one yet.
 
-```
-┌ Sections ────────────────┐┌ Analyzer ─────────────────────────────────────┐
-│   Personal Info          ││→ Add a number to "Conducted weekly lab sess…" │
-│   Education              ││                                               │
-│ ▸ Experience     3       ││                                               │
-│   Projects       3       ││                                               │
-│   Skills         4     ✗ ││                                               │
-└──────────────────────────┘└───────────────────────────────────────────────┘
-┌ Experience ───────────────────────────────────────────────────────────────┐
-│   Experience 1 · Google Summer of Code                                    │
-│   company    Google Summer of Code                                        │
-│   role       Open Source Contributor                                      │
-│▸  duration   May 2023 -- Aug 2023                                         │
-│   •          Contributed to a Rust networking library with 8k stars       │
-│    + bullet                                                               │
-└───────────────────────────────────────────────────────────────────────────┘
- saved resume.txt
- ↑↓ move · Tab section · i edit · a add · d delete · s save · b build · q quit
-```
+Move with the arrow keys, press `i` to edit a field, `b` to build. The
+picture at the top of this page is the editor exactly as it looks — it is
+rendered from the program itself, not drawn by hand.
 
 The analyzer runs as you type, and the `✗` next to a section tells you where
 the problems are. Nothing is written to disk until you press `s` or `b`, so
@@ -229,18 +213,12 @@ it typesets correctly. URLs keep their `_` and `~`.
 
 ## 🎯 Writing a resume worth reading
 
-`txt2tex analyze` scores the file out of 100 and says what to fix:
+`txt2tex build` builds the PDF and tells you how many things could be
+better; `txt2tex analyze` scores the file out of 100 and says what to fix:
 
-```
-  Personal Info
-    ✗  Missing phone number
-    →  Add your GitHub — recruiters do look
-
-  Experience
-    →  Add a number to "Conducted weekly lab sessions and doubt…"
-
-  score 84/100   1 issue, 2 suggestions
-```
+<p align="center">
+  <img src="assets/demo.svg" alt="txt2tex build, then txt2tex analyze listing one issue and two suggestions with a score of 84/100" width="620">
+</p>
 
 It flags missing contact details, projects with no tech stack, entries with no
 bullets, and — the one that matters — bullets with no numbers in them.
@@ -282,6 +260,7 @@ src/
     edit.rs     one-line text editor
     field.rs    addresses one string inside a Resume
     ui.rs       drawing
+    svg.rs      a frame → SVG, for the README screenshot (tests only)
 ```
 
 The PDF layout is [Jake Gutierrez's resume
@@ -292,7 +271,7 @@ template](https://github.com/jakegut/resume), widely used and ATS-friendly.
 ## 🛠️ Development
 
 ```bash
-cargo test            # 99 tests
+cargo test            # 100 tests
 cargo clippy          # clean
 cargo fmt
 cargo run -- analyze
@@ -300,6 +279,13 @@ cargo run -- analyze
 
 The TUI is tested by rendering to an in-memory backend, so the layout and key
 handling are covered in CI without a terminal.
+
+The editor screenshot in this README comes from the same backend. After
+changing the UI, regenerate it:
+
+```bash
+cargo test readme_screenshot -- --ignored   # writes assets/tui.svg
+```
 
 ### Releasing
 
