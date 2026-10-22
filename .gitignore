@@ -1,0 +1,14 @@
+/target
+*.pdf
+*.tex
+*.aux
+*.log
+
+# macOS
+.DS_Store
+
+# Your own resume stays local; templates/jake.txt is the shipped sample
+resume.txt
+
+# Claude Code local settings
+.claude/settings.local.json

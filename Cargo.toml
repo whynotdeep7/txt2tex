@@ -1,0 +1,23 @@
+[package]
+name         = "txt2tex"
+version      = "0.3.0"
+edition      = "2021"
+rust-version = "1.88"
+description  = "Convert plain text resumes into professional PDFs via LaTeX"
+license      = "MIT"
+repository   = "https://github.com/whynotdeep7/txt2tex"
+authors      = ["DeepS"]
+keywords     = ["resume", "pdf", "latex", "cli"]
+categories   = ["command-line-utilities"]
+readme       = "README.md"
+exclude      = ["/.github", "/install.sh", "/install.ps1"]
+
+[dependencies]
+clap     = { version = "4.4", features = ["derive"] }
+colored  = "2.1"
+ratatui  = { version = "0.30", default-features = false, features = ["crossterm"] }
+tempfile = "3.9"
+
+[profile.release]
+lto   = true
+strip = true

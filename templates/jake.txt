@@ -1,0 +1,61 @@
+# PERSONAL INFORMATION
+name: Alex Johnson
+email: alex.johnson@email.com
+phone: +1 555-867-5309
+github: github.com/alexjohnson
+
+# EDUCATION
+degree: Bachelor of Technology in Computer Science
+university: State Technical University
+year: 2020 -- 2024
+
+# EXPERIENCE
+
+experience:
+company: Google Summer of Code
+role: Open Source Contributor
+duration: May 2023 -- Aug 2023
+- Contributed to a Rust networking library with 8k GitHub stars
+- Implemented 3 new features reducing memory usage by 40 percent
+- Fixed 12 critical bugs and wrote regression tests for each fix
+- Collaborated with 15 maintainers across 6 countries
+
+experience:
+company: State Technical University
+role: Teaching Assistant
+duration: Jan 2023 -- May 2023
+- Assisted professor teaching Data Structures to 150 students
+- Conducted weekly lab sessions and doubt clearing sessions
+- Graded 300 assignments per semester with detailed written feedback
+- Helped average student score improve by 18 percent over previous semester
+
+experience:
+company: WebSoft Solutions
+role: Backend Intern
+duration: Summer 2022
+- Built REST APIs serving 50k requests per day using Node.js and PostgreSQL
+- Reduced average API response time from 800ms to 120ms through query optimization
+- Wrote unit tests bringing code coverage from 40 to 85 percent
+
+# PROJECTS
+
+project:
+title: CloudNotes
+description: Built a full stack note taking app with real time sync across devices. Implemented backend with Node.js and PostgreSQL storing 100k plus notes. Used WebSockets for real time collaboration. Deployed on AWS handling 10x traffic spikes
+tech: Node.js, React, PostgreSQL, WebSockets, AWS
+
+project:
+title: FastSearch
+description: Built a full text search engine in Rust indexing 1 million documents in under 2 seconds. Implemented inverted index with TF-IDF ranking from scratch. Exposed HTTP API using Actix-web handling 5000 queries per second
+tech: Rust, Actix-web, SQLite, Docker
+
+project:
+title: BudgetBot
+description: Built a Telegram bot tracking personal expenses and generating monthly reports. Stores transactions in SQLite with category tagging. Sends weekly summaries with charts. Used by 500 plus users after posting on Reddit
+tech: Python, SQLite, Matplotlib, Telegram API
+
+# SKILLS
+Languages: Rust, C++, Python, JavaScript, TypeScript, SQL, Bash
+Frameworks: React, Node.js, Express, Actix-web, FastAPI, Django
+Developer Tools: Git, Docker, Linux, AWS, PostgreSQL, Redis, Nginx
+Libraries: NumPy, Pandas, Matplotlib, Tokio, Serde, SQLAlchemy
