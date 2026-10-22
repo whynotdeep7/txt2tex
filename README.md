@@ -1,25 +1,56 @@
-# txt2tex
+<p align="center">
+  <img src="assets/logo.svg" alt="txt2tex" width="720">
+</p>
 
-**Write your resume as plain text. Get a typeset PDF.**
+<p align="center">
+  <a href="https://github.com/whynotdeep7/txt2tex/releases/latest"><img src="https://img.shields.io/github/v/release/whynotdeep7/txt2tex?style=flat-square&color=a78bfa&label=release" alt="Latest release"></a>
+  <a href="https://github.com/whynotdeep7/txt2tex/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/whynotdeep7/txt2tex/ci.yml?branch=main&style=flat-square&label=tests" alt="Tests"></a>
+  <img src="https://img.shields.io/badge/macOS%20%C2%B7%20Linux%20%C2%B7%20Windows-7dd3fc?style=flat-square" alt="macOS, Linux, Windows">
+  <img src="https://img.shields.io/badge/built%20with-Rust-f472b6?style=flat-square" alt="Built with Rust">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-6e7681?style=flat-square" alt="MIT license"></a>
+</p>
+
+<p align="center">
+  <b>Write your resume as plain text. Get a typeset PDF.</b><br>
+  <sub>
+    <a href="#-install">Install</a> ·
+    <a href="#-use">Use</a> ·
+    <a href="#-the-file-format">File format</a> ·
+    <a href="#-writing-a-resume-worth-reading">Analyzer</a> ·
+    <a href="#-how-it-works">How it works</a> ·
+    <a href="#-development">Development</a>
+  </sub>
+</p>
+
+---
 
 No LaTeX, no Word, no drag-and-drop. Edit fields in a terminal UI (or your own
 editor), press `b`, get a PDF that looks like it was set by a typesetter —
 because it was.
 
-```
-resume.txt  →  parse  →  LaTeX  →  tectonic  →  resume.pdf
-```
+<p align="center">
+  <img src="assets/demo.svg" alt="txt2tex build and txt2tex analyze in a terminal" width="620">
+</p>
 
 ---
 
-## Install
+## 📦 Install
+
+**macOS / Linux**
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/whynotdeep7/txt2tex/main/install.sh | sh
 ```
 
-Downloads the prebuilt binary for your machine and puts it on your PATH. It
-does not install a toolchain or touch your shell config.
+**Windows** (PowerShell)
+
+```powershell
+irm https://raw.githubusercontent.com/whynotdeep7/txt2tex/main/install.ps1 | iex
+```
+
+The installer downloads the prebuilt binary for your machine from the latest
+release and puts it on your PATH. It does not install a toolchain or touch your
+shell config.
 
 You also need [tectonic](https://tectonic-typesetting.github.io), which does
 the actual typesetting:
@@ -27,28 +58,41 @@ the actual typesetting:
 ```bash
 brew install tectonic          # macOS
 cargo install tectonic         # Linux
+choco install tectonic         # Windows
 ```
 
 <details>
-<summary>Other ways to install</summary>
+<summary><b>Other ways to install</b></summary>
+
+<br>
+
+Download a binary yourself from the
+[latest release](https://github.com/whynotdeep7/txt2tex/releases/latest):
+
+| Platform | Binary |
+|---|---|
+| macOS (Apple Silicon) | [`txt2tex-macos-arm64`](https://github.com/whynotdeep7/txt2tex/releases/latest/download/txt2tex-macos-arm64) |
+| Linux (x86_64) | [`txt2tex-linux-x86_64`](https://github.com/whynotdeep7/txt2tex/releases/latest/download/txt2tex-linux-x86_64) |
+| Windows (x86_64) | [`txt2tex-windows-x86_64.exe`](https://github.com/whynotdeep7/txt2tex/releases/latest/download/txt2tex-windows-x86_64.exe) |
 
 ```bash
-# From source (any platform with Rust)
-cargo install --git https://github.com/whynotdeep7/txt2tex
-
-# A specific binary, by hand
+# e.g. on macOS
 curl -fsSL https://github.com/whynotdeep7/txt2tex/releases/latest/download/txt2tex-macos-arm64 -o txt2tex
 chmod +x txt2tex && mv txt2tex ~/.local/bin/
 ```
 
-Prebuilt binaries: macOS (Apple Silicon), Linux (x86_64), Windows (x86_64).
-Intel Macs build from source.
+Or build from source on any platform with Rust 1.88+ (this is the way for
+Intel Macs):
+
+```bash
+cargo install --git https://github.com/whynotdeep7/txt2tex
+```
 
 </details>
 
 ---
 
-## Use
+## ⌨️ Use
 
 ```bash
 txt2tex
@@ -117,7 +161,7 @@ Progress goes to stderr and results to stdout, so `--tex` pipes cleanly.
 
 ---
 
-## The file format
+## 📝 The file format
 
 Line-oriented and forgiving. Unknown keys and sections are ignored rather than
 rejected, so a typo costs you one field, not the build.
@@ -183,7 +227,7 @@ it typesets correctly. URLs keep their `_` and `~`.
 
 ---
 
-## Writing a resume worth reading
+## 🎯 Writing a resume worth reading
 
 `txt2tex analyze` scores the file out of 100 and says what to fix:
 
@@ -195,7 +239,7 @@ it typesets correctly. URLs keep their `_` and `~`.
   Experience
     →  Add a number to "Conducted weekly lab sessions and doubt…"
 
-  score 87/100   1 issue, 2 suggestions
+  score 84/100   1 issue, 2 suggestions
 ```
 
 It flags missing contact details, projects with no tech stack, entries with no
@@ -205,7 +249,7 @@ keep asking until you write the first kind.
 
 ---
 
-## How it works
+## ⚙️ How it works
 
 ```
   resume.txt ──parser──▶ Resume ──template──▶ LaTeX ──pdf──▶ resume.pdf
@@ -245,11 +289,12 @@ template](https://github.com/jakegut/resume), widely used and ATS-friendly.
 
 ---
 
-## Development
+## 🛠️ Development
 
 ```bash
 cargo test            # 99 tests
 cargo clippy          # clean
+cargo fmt
 cargo run -- analyze
 ```
 
@@ -258,19 +303,26 @@ handling are covered in CI without a terminal.
 
 ### Releasing
 
-Push a version tag; GitHub Actions builds the binaries and creates the release:
+Binaries are built by GitHub Actions, not on your machine. To ship a version:
 
 ```bash
-# bump version in Cargo.toml first
-git tag v0.3.0
+# 1. bump `version` in Cargo.toml, then
+git commit -am "release v0.4.0"
+git tag v0.4.0
 git push && git push --tags
 ```
 
-The installer downloads from `releases/latest/download/…`, which always
-redirects to the newest release — so no URL needs updating when you ship.
+Pushing the tag runs [`release.yml`](.github/workflows/release.yml), which
+builds macOS, Linux and Windows binaries and attaches them to a new
+[release](https://github.com/whynotdeep7/txt2tex/releases). The installers
+download from `releases/latest/download/…`, which always redirects to the
+newest release, so nothing else needs updating.
+
+Every push to `main` also runs [`ci.yml`](.github/workflows/ci.yml):
+formatting, clippy and the tests on all three platforms.
 
 ---
 
-## License
+## 📄 License
 
-MIT.
+[MIT](LICENSE) © DeepS

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="735" height="258" viewBox="0 0 735 258" role="img" aria-label="txt2tex">
+<defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#7dd3fc"/><stop offset="0.5" stop-color="#a78bfa"/><stop offset="1" stop-color="#f472b6"/></linearGradient></defs>
+<rect width="735" height="258" rx="14" fill="#0d1117"/>
+<g font-family="Menlo, Consolas, 'DejaVu Sans Mono', 'Liberation Mono', monospace" font-size="18" xml:space="preserve">
+<text x="48" y="66.0" fill="url(#g)" textLength="639.3" lengthAdjust="spacingAndGlyphs">████████╗██╗  ██╗████████╗██████╗ ████████╗███████╗██╗  ██╗</text>
+<text x="48" y="84.0" fill="url(#g)" textLength="639.3" lengthAdjust="spacingAndGlyphs">╚══██╔══╝╚██╗██╔╝╚══██╔══╝╚════██╗╚══██╔══╝██╔════╝╚██╗██╔╝</text>
+<text x="48" y="102.0" fill="url(#g)" textLength="639.3" lengthAdjust="spacingAndGlyphs">   ██║    ╚███╔╝    ██║    █████╔╝   ██║   █████╗   ╚███╔╝ </text>
+<text x="48" y="120.0" fill="url(#g)" textLength="639.3" lengthAdjust="spacingAndGlyphs">   ██║    ██╔██╗    ██║   ██╔═══╝    ██║   ██╔══╝   ██╔██╗ </text>
+<text x="48" y="138.0" fill="url(#g)" textLength="639.3" lengthAdjust="spacingAndGlyphs">   ██║   ██╔╝ ██╗   ██║   ███████╗   ██║   ███████╗██╔╝ ██╗</text>
+<text x="48" y="156.0" fill="url(#g)" textLength="639.3" lengthAdjust="spacingAndGlyphs">   ╚═╝   ╚═╝  ╚═╝   ╚═╝   ╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝</text>
+</g>
+<g font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="15" text-anchor="middle"><text x="367.5" y="196" fill="#8b949e"><tspan fill="#7dd3fc">resume.txt</tspan>  ──▶  <tspan fill="#a78bfa">LaTeX</tspan>  ──▶  <tspan fill="#f472b6">resume.pdf</tspan></text><text x="367.5" y="226" fill="#6e7681" font-size="13">write it as plain text · get it typeset</text></g>
+</svg>
