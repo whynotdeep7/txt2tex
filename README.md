@@ -28,9 +28,9 @@ No LaTeX, no Word, no drag-and-drop. Edit fields in a terminal UI (or your own
 editor), press `b`, get a PDF that looks like it was set by a typesetter —
 because it was.
 
-<p align="center">
-  <img src="assets/tui.svg" alt="The txt2tex editor: a section list, live analyzer feedback, and the fields of the Experience section" width="820">
-</p>
+```
+resume.txt  →  parse  →  LaTeX  →  tectonic  →  resume.pdf
+```
 
 ---
 
@@ -101,9 +101,7 @@ txt2tex
 That's the whole thing. It opens the editor on `resume.txt`, creating one from
 a template if you don't have one yet.
 
-Move with the arrow keys, press `i` to edit a field, `b` to build. The
-picture at the top of this page is the editor exactly as it looks — it is
-rendered from the program itself, not drawn by hand.
+Move with the arrow keys, press `i` to edit a field, `b` to build.
 
 The analyzer runs as you type, and the `✗` next to a section tells you where
 the problems are. Nothing is written to disk until you press `s` or `b`, so
@@ -213,12 +211,18 @@ it typesets correctly. URLs keep their `_` and `~`.
 
 ## 🎯 Writing a resume worth reading
 
-`txt2tex build` builds the PDF and tells you how many things could be
-better; `txt2tex analyze` scores the file out of 100 and says what to fix:
+`txt2tex analyze` scores the file out of 100 and says what to fix:
 
-<p align="center">
-  <img src="assets/demo.svg" alt="txt2tex build, then txt2tex analyze listing one issue and two suggestions with a score of 84/100" width="620">
-</p>
+```
+  Personal Info
+    ✗  Missing phone number
+    →  Add your GitHub — recruiters do look
+
+  Experience
+    →  Add a number to "Conducted weekly lab sessions and doubt…"
+
+  score 84/100   1 issue, 2 suggestions
+```
 
 It flags missing contact details, projects with no tech stack, entries with no
 bullets, and — the one that matters — bullets with no numbers in them.
@@ -260,7 +264,6 @@ src/
     edit.rs     one-line text editor
     field.rs    addresses one string inside a Resume
     ui.rs       drawing
-    svg.rs      a frame → SVG, for the README screenshot (tests only)
 ```
 
 The PDF layout is [Jake Gutierrez's resume
@@ -279,13 +282,6 @@ cargo run -- analyze
 
 The TUI is tested by rendering to an in-memory backend, so the layout and key
 handling are covered in CI without a terminal.
-
-The editor screenshot in this README comes from the same backend. After
-changing the UI, regenerate it:
-
-```bash
-cargo test readme_screenshot -- --ignored   # writes assets/tui.svg
-```
 
 ### Releasing
 

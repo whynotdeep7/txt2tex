@@ -13,8 +13,6 @@ mod app;
 mod edit;
 mod field;
 mod rows;
-#[cfg(test)]
-mod svg;
 mod ui;
 
 pub use app::App;
@@ -186,30 +184,5 @@ mod tests {
             label.fg, label.bg,
             "label is drawn in its own background colour"
         );
-    }
-
-    /// Writes the README's screenshot of the editor. Ignored because it
-    /// writes into the repo; run it after changing the UI:
-    ///
-    ///     cargo test readme_screenshot -- --ignored
-    #[test]
-    #[ignore]
-    fn readme_screenshot() {
-        let mut app = demo();
-        let key = |c| KeyEvent::new(KeyCode::Char(c), KeyModifiers::NONE);
-        app.on_key(key('3'));
-        for _ in 0..3 {
-            app.on_key(key('j'));
-        }
-
-        let mut terminal = Terminal::new(TestBackend::new(100, 30)).unwrap();
-        let mut list = ListState::default();
-        terminal
-            .draw(|frame| ui::draw(frame, &app, &mut list))
-            .unwrap();
-
-        let svg = svg::render(terminal.backend().buffer(), "txt2tex — resume.txt");
-        let path = concat!(env!("CARGO_MANIFEST_DIR"), "/assets/tui.svg");
-        std::fs::write(path, svg).unwrap();
     }
 }
